@@ -7,7 +7,6 @@ const routes = require('./routes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Allow CORS operation
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, OPTIONS")
@@ -27,23 +26,22 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newYorkTimes
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error Handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+  // Limit Error Messages to Development Mode
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // Error Page Rendering
   res.status(err.status || 500);
   res.render('error');
 });
 
-// Start the API server
+// Starting the API server, indicating open port
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
