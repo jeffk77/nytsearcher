@@ -1,0 +1,17 @@
+.fullwidth {
+    width: 100%;
+}
+
+.articleList {
+    box-sizing: border-box;
+    overflow: auto;
+    border: 1px solid black;
+    max-height: 440px;
+};
+
+.savedList {
+    box-sizing: border-box;
+    overflow: auto;
+    border: 1px solid black;
+    max-height: 180px;
+};
